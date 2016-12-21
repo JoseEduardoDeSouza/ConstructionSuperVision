@@ -21,24 +21,37 @@ def upload():
     print(target)
     cpf=request.form.getlist("cpf")
     cpf=cpf[0]
-
-    if not os.path.isdir(target):
-        os.mkdir(target)
     if not os.path.isdir(target+cpf):
     	print(target+cpf)
         os.mkdir(target+cpf)
+    local = os.listdir(target+cpf)
+    
+    print(local)
+    tamanho=len(local)
     cont=0
-    for file in request.files.getlist("file"):
-        filename = file.filename
-        filename =  filename.split(".")
-        filename[0] = str(cont) 
-        filename=filename[0]+"."+filename[1]
-        print(filename)
-        destination = "/".join([target+cpf, filename])
-        print(destination)
-        file.save(destination)
-        cont+=1
+    if tamanho > 0:
+    	cont=contador(local)
+    	for file in request.files.getlist("file"):
+    		filename = file.filename
+	        filename =  filename.split(".")
+	        filename[0] = str(cont) 
+	        filename=filename[0]+"."+filename[1]
+	        destination = "/".join([target+cpf, filename])
+	        file.save(destination)
+	        cont+=1
+	        
 
+    if local == []:
+	    for file in request.files.getlist("file"):
+	        filename = file.filename
+	        filename =  filename.split(".")
+	        filename[0] = str(cont) 
+	        filename=filename[0]+"."+filename[1]
+	        print(filename)
+	        destination = "/".join([target+cpf, filename])
+	        print(destination)
+	        file.save(destination)
+	        cont+=1
 
     return render_template("complete.html")
 
@@ -48,5 +61,22 @@ def image():
 	if 'img' in request.args:
 		pos=request.args["img"]
 		return send_file(pos)
+
+def contador(local):
+	maior=0
+	for i in local:
+		PE=primeiro_elemento(i)
+		PE=int(PE)
+		print(PE)
+		if PE > maior:
+			maior=PE
+	print(maior)
+	return maior+1
+
+
+def primeiro_elemento(i):
+	a=i.split(".")
+	return a[0]
+
 if __name__ == "__main__":
     app.run(host='192.168.1.103', port=8081, debug = True)
