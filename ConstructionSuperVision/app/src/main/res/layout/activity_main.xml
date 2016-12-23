@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:background="#3A5FCD"
-    android:gravity="center"
+    android:gravity="top|center"
     >
 
     <EditText
@@ -19,7 +19,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:hint="CPF"
-        android:id="@+id/editEmail1" />
+        android:id="@+id/editEmail1"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -36,13 +36,6 @@
         android:id="@+id/btnLogar"
         android:onClick="btnlog"/>
 
-    <TextView
-        android:text="Crie sua conta aqui!"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:textColor="#fff"
-        android:id="@+id/txtCadastro" />
+
 
 </LinearLayout>

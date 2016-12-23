@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         editEmail1 = (EditText) findViewById(R.id.editEmail1);
         editSenha1 = (EditText) findViewById(R.id.editSenha1);
         btnLogar = (Button) findViewById(R.id.btnLogar);
-        txtCadastro = (TextView) findViewById(R.id.txtCadastro);
     }
     public void btnlog(View view){
 
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String resultado) {
             Log.d("resposta",resultado);
 
-            if(resultado.isEmpty()){
+            if(!resultado.isEmpty()){
                 Intent abreInicio = new Intent(MainActivity.this, TelaInicial.class);
                 startActivity(abreInicio);
 
