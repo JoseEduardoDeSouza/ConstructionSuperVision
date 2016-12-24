@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -9,8 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="#3A5FCD"
-    android:gravity="top|center"
+    android:background="#FF000093"
+    android:weightSum="1"
     >
 
     <EditText
@@ -19,6 +20,8 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:hint="CPF"
+        android:textColorHint="#fff"
+        android:textColor="#fff"
         android:id="@+id/editEmail1"/>
 
     <EditText
@@ -27,15 +30,20 @@
         android:inputType="textPassword"
         android:ems="10"
         android:hint="Senha"
-        android:id="@+id/editSenha1" />
+        android:textColor="#fff"
+        android:id="@+id/editSenha1"
+        android:textColorHint="#fff"/>
 
     <Button
         android:text="Entrar"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnLogar"
-        android:onClick="btnlog"/>
+        android:onClick="btnlog"
+        android:layout_gravity="center"/>
+
 
 
 
 </LinearLayout>
+

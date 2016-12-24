@@ -61,6 +61,13 @@ def image():
 	if 'img' in request.args:
 		pos=request.args["img"]
 		return send_file(pos)
+@app.route("/qntd")
+def qnt():
+	target = os.path.join(APP_ROOT, 'images/')
+	if 'cpf' in request.args:
+		cpf=request.args["cpf"]
+		qnt=str(len(os.listdir(target+cpf)))
+		return qnt
 
 def contador(local):
 	maior=0

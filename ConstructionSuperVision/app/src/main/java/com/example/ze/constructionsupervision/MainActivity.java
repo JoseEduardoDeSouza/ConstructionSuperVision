@@ -2,9 +2,11 @@ package com.example.ze.constructionsupervision;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editEmail1, editSenha1;
     Button btnLogar;
-    TextView txtCadastro;
+    String email,senha;
 
     String url = "";
     String parametros ="";
@@ -44,14 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            String email = editEmail1.getText().toString();
-            String senha = editSenha1.getText().toString();
-
+            email = editEmail1.getText().toString();
+            senha = editSenha1.getText().toString();
             if (email.isEmpty() || senha.isEmpty()){
                 Toast.makeText(getApplicationContext(),"Campo não preenchido",Toast.LENGTH_SHORT).show();
             } else{
                 url = "http://192.168.1.103/html/logar.php?";
                 parametros = "email="+email+"&senha="+senha;
+                Intent i = new Intent(this, TelaInicial.class);
+
                 new SolicitaDados().execute(url+parametros);
 
             }
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(!resultado.isEmpty()){
                 Intent abreInicio = new Intent(MainActivity.this, TelaInicial.class);
+                abreInicio.putExtra("CPF", email);
                 startActivity(abreInicio);
 
             }else{
@@ -83,4 +87,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }
