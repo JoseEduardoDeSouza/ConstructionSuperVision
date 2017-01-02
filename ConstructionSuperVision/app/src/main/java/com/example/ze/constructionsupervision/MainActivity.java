@@ -1,5 +1,6 @@
 package com.example.ze.constructionsupervision;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,15 +13,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     EditText editEmail1, editSenha1;
     Button btnLogar;
@@ -31,11 +36,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_main);
 
         editEmail1 = (EditText) findViewById(R.id.editEmail1);
         editSenha1 = (EditText) findViewById(R.id.editSenha1);
-        btnLogar = (Button) findViewById(R.id.btnLogar);
+        final LinearLayout iv = (LinearLayout) findViewById(R.id.imagem);
+        final Animation an = AnimationUtils.loadAnimation(getBaseContext(),R.anim.novo);
+        final Animation an2 = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);
+
+        iv.startAnimation(an);
+        final TextView tv = (TextView) findViewById(R.id.texto);
+        final Animation ant = AnimationUtils.loadAnimation(getBaseContext(),R.anim.novo);
+        final Animation ant2 = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);
+        tv.startAnimation(an);
     }
     public void btnlog(View view){
 
@@ -65,11 +80,16 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Nenhuma Conexão foi detectada",Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void criar(View view){
+        Intent i = new Intent(this, criar_conta.class);
+        startActivity(i);
+    }
     private class SolicitaDados extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
 
-            return Conexao.postDados(urls[0], parametros);
+            return Conexao.postDados(urls[0],parametros);
 
         }
         // onPostExecute displays the results of the AsyncTask.

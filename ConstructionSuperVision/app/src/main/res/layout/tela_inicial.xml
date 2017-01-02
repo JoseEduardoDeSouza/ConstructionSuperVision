@@ -4,50 +4,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="top"
-    android:background="#ff000000"
-    android:weightSum="1">
+    android:gravity="bottom"
+    android:background="@color/colorPrimary"
+    android:weightSum="1"
+    android:id="@+id/lay"
+    >
 
 
-    <ImageView
-        android:layout_width="387dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imageView"
-        android:layout_weight="0.66" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_weight="0.28">
+
+        <TextView
+            android:text="0% da obra concluída."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:fontFamily="sans-serif-smallcaps"
+
+            android:layout_weight="0.20"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="20dp"/>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar2"
+            android:progress="60"
+            android:layout_weight="0.20" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="177dp"
+        android:layout_weight="0.26"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/imageView"
+            android:cropToPadding="true" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="230dp"
         android:layout_height="80dp"
         android:weightSum="1"
         android:layout_gravity="center"
-        android:layout_weight="0.12">
+        android:layout_weight="0.22">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/esquerda"
-            android:id="@+id/imageButton6"
-            android:layout_weight="1"
-            android:background="@color/transparente"
-            android:onClick="voltar"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/esquerda"
+            >
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/direita"
-            android:id="@+id/imageButton3"
-            android:layout_weight="1"
-            android:background="@color/transparente"
-            android:onClick="ir"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/button2"
+                android:layout_weight="1"
+                android:background="@color/transparente"
+                android:onClick="voltar"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/direita"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/button3"
+                android:background="@color/transparente"
+                android:layout_weight="1"
+                android:onClick="ir"/>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center">
+        android:layout_height="103dp"
+        android:gravity="center"
+        android:layout_weight="0.06"
+        android:weightSum="1">
 
         <TextView
             android:text=""
@@ -56,7 +112,10 @@
             android:id="@+id/textView2"
             android:gravity="center"
             android:textColor="#fff"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-smallcaps"
+
+            android:layout_weight="0.28" />
     </LinearLayout>
 
 </LinearLayout>
